@@ -10,11 +10,19 @@
 
 name: NEWIFI 3
 
+#on:
+#  repository_dispatch:
+#  release:
+#    types: published
 on:
   repository_dispatch:
-  release:
-    types: published
-  push:
+  workflow_dispatch:
+    inputs:
+      ssh:
+        description: 'SSH connection to Actions'
+        required: false
+        default: 'false'
+push:
     branches:
       - master
     paths:
